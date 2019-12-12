@@ -1,3 +1,4 @@
+
 const hogs = [
   {
     name: 'Mudblood',
@@ -93,3 +94,4 @@ const hogs = [
 ];
 
 export default hogs;
+
