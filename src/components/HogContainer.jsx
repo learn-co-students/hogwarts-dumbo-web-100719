@@ -9,7 +9,7 @@ class HogContainer extends Component {
 
   renderHogs = () => {
     return (
-      <div className="ui four stackable cards">
+      <div>
         {this.props.hogs.map((hog, index) => (
           <HogCard
             key={index}
@@ -20,7 +20,6 @@ class HogContainer extends Component {
             medal={hog["highest medal achieved"]}
           />
         ))}
-        ;
       </div>
     );
   };

@@ -2,11 +2,19 @@ import React, { Component } from "react";
 import { Grid, Image, Reveal } from "semantic-ui-react";
 
 class HogCard extends Component {
-  testing = () => {
-    console.log(this.state.clicked);
-  };
-  state = {
-    clicked: false
+  constructor() {
+    super();
+    this.state = {
+      clicked: false
+    };
+  }
+
+  handleClickState = () => {
+    const clickState = this.state.clicked;
+    console.log(clickState);
+    this.setState({
+      clicked: !clickState
+    });
   };
 
   loadImage = hogName => {
@@ -18,21 +26,12 @@ class HogCard extends Component {
     return imageUrl;
   };
 
-  handleClickState = e => {
-    console.log(e.target);
-    this.setState({
-      clicked: true
-    });
-  };
-
   render() {
-    {
-      this.testing();
-    }
     const { name, specialty, weight, greased } = this.props;
+    const styleClass = this.state.clicked ? "block" : "none";
 
     return (
-      <div className="ui card eight wide column pigTile">
+      <div className="pigTile">
         <div className="image" onClick={this.handleClickState}>
           {/* <img
               src={
@@ -49,9 +48,12 @@ class HogCard extends Component {
             <h3 className="header">{name}</h3>
           </div>
         </div>
-        <div className={this.state.clicked ? "active" : null}>{weight}</div>
-        <div>{specialty}</div>
-        <div>{greased ? "Yes" : "No"}</div>
+        <div style={{ display: styleClass }}>
+          <p>{weight}</p>
+          <p>{specialty}</p>
+
+          <p>{greased ? "Yes" : "No"}</p>
+        </div>
       </div>
     );
   }
